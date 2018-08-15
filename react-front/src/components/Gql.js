@@ -5,36 +5,67 @@ import gql from 'graphql-tag';
 export default class Gql extends Component {
   render() {
     return (
-      <Query query={query}>
+      <Query query={ALL_RECIPES}>
         {({ data, loading }) => {
           if (loading) return 'Loading...';
 
-          const { recipe } = data;
-          const { name, category, description, ingredients, images, dietary } = recipe;
-          const { vegetarian, vegan, glutenFree } = dietary;
+          const { recipes } = data;
 
           return (
             <div>
-              <h1>GraphQL</h1>
-              <h2>{name}</h2>
-              <h3>{category}</h3>
-              <p>{description}</p>
-              <ul>
-                {ingredients.map(ingredient => {
-                  return <li key={ingredient.name}>{ingredient.name + ', ' + ingredient.amount}</li>;
-                })}
-              </ul>
-              <img src={images[0]} alt={name} />
-              <p>{vegetarian ? 'Vegetarian!' : 'Not vegetarian'}</p>
-              <p>{vegan ? 'Vegan!' : 'Not vegan'}</p>
-              <p>{glutenFree ? 'Gluten-Free!' : 'Has gluten'}</p>
+              {recipes.map(recipe => {
+                const { name, images } = recipe;
+                return (
+                  <div key={name}>
+                    <h2>{name}</h2>
+                    <img src={images[0]} alt={name} />
+                  </div>
+                );
+              })}
             </div>
           );
         }}
       </Query>
+
+      // <Query query={query}>
+      //   {({ data, loading }) => {
+      //     if (loading) return 'Loading...';
+
+      //     const { recipe } = data;
+      //     const { name, category, description, ingredients, images, dietary } = recipe;
+      //     const { vegetarian, vegan, glutenFree } = dietary;
+
+      //     return (
+      //       <div>
+      //         <h1>GraphQL</h1>
+      //         <h2>{name}</h2>
+      //         <h3>{category}</h3>
+      //         <p>{description}</p>
+      //         <ul>
+      //           {ingredients.map(ingredient => {
+      //             return <li key={ingredient.name}>{ingredient.name + ', ' + ingredient.amount}</li>;
+      //           })}
+      //         </ul>
+      //         <img src={images[0]} alt={name} />
+      //         <p>{vegetarian ? 'Vegetarian!' : 'Not vegetarian'}</p>
+      //         <p>{vegan ? 'Vegan!' : 'Not vegan'}</p>
+      //         <p>{glutenFree ? 'Gluten-Free!' : 'Has gluten'}</p>
+      //       </div>
+      //     );
+      //   }}
+      // </Query>
     );
   }
 }
+
+const ALL_RECIPES = gql`
+  query recipes {
+    recipes @rest(type: "Recipe", path: "/") {
+      name
+      images
+    }
+  }
+`;
 
 const query = gql`
   query tacos {
