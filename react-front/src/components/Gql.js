@@ -10,7 +10,8 @@ export default class Gql extends Component {
           if (loading) return 'Loading...';
 
           const { recipe } = data;
-          const { name, category, description, ingredients, images, vegetarian } = recipe;
+          const { name, category, description, ingredients, images, dietary } = recipe;
+          const { vegetarian, vegan, glutenFree } = dietary;
 
           return (
             <div>
@@ -24,7 +25,9 @@ export default class Gql extends Component {
                 })}
               </ul>
               <img src={images[0]} alt={name} />
-              <p>{vegetarian ? "Yep, it's veggie!" : 'Not veggie!'}</p>
+              <p>{vegetarian ? 'Vegetarian!' : 'Not vegetarian'}</p>
+              <p>{vegan ? 'Vegan!' : 'Not vegan'}</p>
+              <p>{glutenFree ? 'Gluten-Free!' : 'Has gluten'}</p>
             </div>
           );
         }}
@@ -35,13 +38,17 @@ export default class Gql extends Component {
 
 const query = gql`
   query tacos {
-    recipe @rest(type: "Recipe", path: "5b70da72b951a232c8d8d794") {
+    recipe @rest(type: "Recipe", path: "5b73a0f4d774cf297481abf4") {
       name
       category
       description
       ingredients
       images
-      vegetarian
+      dietary @type(name: "Dietary") {
+        vegetarian
+        vegan
+        glutenFree
+      }
     }
   }
 `;

@@ -8,24 +8,23 @@ export default class Fetch extends Component {
       description: '',
       ingredients: [],
       images: [],
-      vegetarian: false,
+      dietary: {},
     },
   };
 
   componentWillMount = () => {
-    fetch('http://localhost:6969/api/recipes/5b70da72b951a232c8d8d794')
+    fetch('http://localhost:6969/api/recipes/5b739cacd774cf297481abeb')
       .then(res => {
         return res.json();
       })
       .then(resJson => {
-        this.setState({
-          loadedRecipe: resJson,
-        });
+        this.setState({ loadedRecipe: resJson });
       });
   };
 
   render() {
-    const { name, category, description, ingredients, images, vegetarian } = this.state.loadedRecipe;
+    const { name, category, description, ingredients, images, dietary } = this.state.loadedRecipe;
+    const { vegetarian, vegan, glutenFree } = dietary;
     return (
       <div>
         <h1>Fetch</h1>
@@ -38,7 +37,9 @@ export default class Fetch extends Component {
           })}
         </ul>
         <img src={images[0]} alt={name} />
-        <p>{vegetarian ? "Yep, it's veggie!" : 'Not veggie!'}</p>
+        <p>{vegetarian ? 'Vegetarian!' : 'Not vegetarian'}</p>
+        <p>{vegan ? 'Vegan!' : 'Not vegan'}</p>
+        <p>{glutenFree ? 'Gluten-Free!' : 'Has gluten'}</p>
       </div>
     );
   }

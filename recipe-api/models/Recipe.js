@@ -13,7 +13,11 @@ const RecipeSchema = new Schema({
     },
   ],
   images: { type: Array, required: false },
-  vegetarian: { type: Boolean, required: false },
+  dietary: {
+    vegetarian: { type: Boolean, required: false },
+    vegan: { type: Boolean, required: false },
+    glutenFree: { type: Boolean, required: false },
+  },
 });
 
 module.exports = mongoose.model('Recipe', RecipeSchema);
