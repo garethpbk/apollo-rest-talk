@@ -12,17 +12,23 @@ export default class Gql extends Component {
           const { recipes } = data;
 
           return (
-            <div>
+            <ul>
               {recipes.map(recipe => {
-                const { name, images } = recipe;
+                const { name, images, dietary } = recipe;
+                const { vegetarian, vegan, glutenFree } = dietary;
                 return (
-                  <div key={name}>
+                  <li key={name}>
                     <h2>{name}</h2>
                     <img src={images[0]} alt={name} />
-                  </div>
+                    <div class="dietary-container">
+                      <span>{vegetarian ? 'Veggie' : ''}</span>
+                      <span>{vegan ? 'Vegan' : ''}</span>
+                      <span>{glutenFree ? 'GF' : ''}</span>
+                    </div>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           );
         }}
       </Query>
@@ -63,6 +69,11 @@ const ALL_RECIPES = gql`
     recipes @rest(type: "Recipe", path: "/") {
       name
       images
+      dietary @type(name: "Dietary") {
+        vegetarian
+        vegan
+        glutenFree
+      }
     }
   }
 `;
