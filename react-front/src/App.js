@@ -6,6 +6,7 @@ import { RestLink } from 'apollo-link-rest';
 import { ApolloProvider } from 'react-apollo';
 import './App.css';
 
+import Admin from './components/Admin';
 import Gql from './components/Gql';
 import Fetch from './components/Fetch';
 
@@ -29,10 +30,13 @@ class App extends Component {
               <Link to="/">GraphQL</Link>
               <br />
               <Link to="/fetch">Fetch</Link>
+              <br />
+              <Link to="/admin">Admin</Link>
             </header>
             <Switch>
               <Route exact path="/" render={props => <Gql />} />
               <Route exact path="/fetch" render={props => <Fetch />} />
+              <Route exact path="/admin" render={props => <Admin />} />
             </Switch>
           </div>
         </Router>

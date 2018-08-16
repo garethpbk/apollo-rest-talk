@@ -32,3 +32,18 @@ li {
   justify-content: space-between;
   padding: 15px 20px;
 }
+
+input,
+select {
+  display: block;
+  margin: 25px 0;
+}
+
+.admin-container {
+  max-width: 980px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
