@@ -6,7 +6,12 @@ export default class Admin extends Component {
       name: '',
       category: '',
       description: '',
-      ingredients: [],
+      ingredients: [
+        {
+          name: '',
+          amount: '',
+        },
+      ],
       images: [],
       dietary: { vegetarian: false, vegan: false, glutenFree: false },
     },
@@ -31,6 +36,47 @@ export default class Admin extends Component {
     const updateObj = { ...this.state.recipe };
 
     updateObj.dietary[name] = !updateObj.dietary[name];
+
+    this.setState({
+      recipe: updateObj,
+    });
+  };
+
+  // ingredientsChange = idx => e => {
+  //   const { name, value } = e.target;
+  //   console.log(value);
+
+  //   const updateObj = { ...this.state.recipe };
+  //   console.log(updateObj);
+
+  //   const newIngredients = updateObj.ingredients.map((ingredient, i) => {
+  //     if (idx !== i) {
+  //       console.log(ingredient);
+  //     }
+  //   });
+  //   newIngredients[i].name = ingredient.name;
+
+  //   // updateObj.recipe[name] = value;
+
+  //   // // const newIngredients = this.state.recipe.ingredients.map((ingredient, i) => {
+  //   // //   if (idx !== i) {
+  //   // //     return ingredient;
+  //   // //   }
+
+  //   // //   return { ...ingredient, name };
+  //   // // });
+
+  //   // this.setState({
+  //   //   ingredients: updateObj,
+  //   // });
+  // };
+
+  addIngredient = () => {
+    const updateObj = { ...this.state.recipe };
+
+    updateObj.ingredients.push({ name: '', amount: '' });
+
+    console.log(updateObj);
 
     this.setState({
       recipe: updateObj,
@@ -86,6 +132,19 @@ export default class Admin extends Component {
           />
           <label htmlFor="glutenFree">Gluten Free?</label>
         </div>
+        <div className="right">
+          {this.state.recipe.ingredients.map((ingredient, i) => {
+            return (
+              <div className="ingredient">
+                <label htmlFor="ingredient.name">Name</label>
+                <input name="name" type="text" value={ingredient.name} onChange={this.ingredientsChange(i)} />
+                <label htmlFor="ingredient.amount">Amount</label>
+                <input name="amount" type="text" value={ingredient.amount} onChange={this.ingredientsChange(i)} />
+              </div>
+            );
+          })}
+        </div>
+        <button onClick={() => this.addIngredient()}>Add Ingredient</button>
       </div>
     );
   }
