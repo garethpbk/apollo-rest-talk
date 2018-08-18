@@ -49,12 +49,10 @@ select {
 
 .left {
   width: 50%;
-  float: left;
 }
 
 .right {
   width: 50%;
-  float: right;
 
   display: flex;
   flex-direction: column;

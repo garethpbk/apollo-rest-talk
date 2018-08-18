@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   const newRecipe = new Recipe(req.body);
   newRecipe.save((err, recipe) => {
-    recipe ? res.status(201).json(recipe) : res.tsatus(404).send(err);
+    recipe ? res.status(201).json(recipe) : res.status(404).send(err);
   });
 });
 

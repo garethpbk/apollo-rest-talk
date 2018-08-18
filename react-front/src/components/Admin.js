@@ -42,34 +42,17 @@ export default class Admin extends Component {
     });
   };
 
-  // ingredientsChange = idx => e => {
-  //   const { name, value } = e.target;
-  //   console.log(value);
+  changeIngredients = (e, i) => {
+    const { name, value } = e.target;
 
-  //   const updateObj = { ...this.state.recipe };
-  //   console.log(updateObj);
+    const updateObj = { ...this.state.recipe };
 
-  //   const newIngredients = updateObj.ingredients.map((ingredient, i) => {
-  //     if (idx !== i) {
-  //       console.log(ingredient);
-  //     }
-  //   });
-  //   newIngredients[i].name = ingredient.name;
+    updateObj.ingredients[i][name] = value;
 
-  //   // updateObj.recipe[name] = value;
-
-  //   // // const newIngredients = this.state.recipe.ingredients.map((ingredient, i) => {
-  //   // //   if (idx !== i) {
-  //   // //     return ingredient;
-  //   // //   }
-
-  //   // //   return { ...ingredient, name };
-  //   // // });
-
-  //   // this.setState({
-  //   //   ingredients: updateObj,
-  //   // });
-  // };
+    this.setState({
+      recipe: updateObj,
+    });
+  };
 
   addIngredient = () => {
     const updateObj = { ...this.state.recipe };
@@ -81,6 +64,28 @@ export default class Admin extends Component {
     this.setState({
       recipe: updateObj,
     });
+  };
+
+  sendRecipe = async () => {
+    const recipeToSend = { ...this.state.recipe };
+    const images = [];
+
+    images.push(recipeToSend.images);
+
+    recipeToSend.images = images;
+
+    const rawResponse = await fetch('http://localhost:6969/api/recipes/', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(recipeToSend),
+    });
+
+    const content = await rawResponse.json();
+
+    console.log(content);
   };
 
   render() {
@@ -135,16 +140,22 @@ export default class Admin extends Component {
         <div className="right">
           {this.state.recipe.ingredients.map((ingredient, i) => {
             return (
-              <div className="ingredient">
+              <div key={`ingredient-field-${i}`} className="ingredient">
                 <label htmlFor="ingredient.name">Name</label>
-                <input name="name" type="text" value={ingredient.name} onChange={this.ingredientsChange(i)} />
+                <input name="name" type="text" value={ingredient.name} onChange={e => this.changeIngredients(e, i)} />
                 <label htmlFor="ingredient.amount">Amount</label>
-                <input name="amount" type="text" value={ingredient.amount} onChange={this.ingredientsChange(i)} />
+                <input
+                  name="amount"
+                  type="text"
+                  value={ingredient.amount}
+                  onChange={e => this.changeIngredients(e, i)}
+                />
               </div>
             );
           })}
+          <button onClick={() => this.addIngredient()}>Add Ingredient</button>
         </div>
-        <button onClick={() => this.addIngredient()}>Add Ingredient</button>
+        <button onClick={() => this.sendRecipe()}>Send Recipe</button>
       </div>
     );
   }
