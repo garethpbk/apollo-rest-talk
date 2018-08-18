@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
 
 export default class Admin extends Component {
   state = {
@@ -160,3 +162,18 @@ export default class Admin extends Component {
     );
   }
 }
+
+const NEW_RECIPE = gql`
+  recipe(input: $input) @rest(type: "Recipe", path: "/", method: "POST") {
+    name
+    category
+    description
+    ingredients
+    images
+    dietary @type(name: "Dietary") {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+`;
