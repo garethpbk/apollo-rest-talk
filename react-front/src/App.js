@@ -9,9 +9,11 @@ import './App.css';
 import Admin from './components/Admin';
 import Gql from './components/Gql';
 import Fetch from './components/Fetch';
+import FetchIndv from './components/FetchIndv';
 
 const restLink = new RestLink({
   uri: 'http://localhost:6969/api/recipes/',
+  credentials: null,
 });
 
 const client = new ApolloClient({
@@ -25,18 +27,17 @@ class App extends Component {
       <ApolloProvider client={client}>
         <Router>
           <div className="App">
-            <header className="App-header">
-              <h1 className="App-title">Welcome to React</h1>
+            <header className="App-header menu">
+              <h1 className="App-title">Raucous Recipes</h1>
               <Link to="/">GraphQL</Link>
-              <br />
               <Link to="/fetch">Fetch</Link>
-              <br />
               <Link to="/admin">Admin</Link>
             </header>
             <Switch>
               <Route exact path="/" render={props => <Gql />} />
               <Route exact path="/fetch" render={props => <Fetch />} />
               <Route exact path="/admin" render={props => <Admin />} />
+              <Route path="/fetch/:id" render={props => <FetchIndv props={props} />} />
             </Switch>
           </div>
         </Router>

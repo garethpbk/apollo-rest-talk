@@ -1,3 +1,7 @@
+body {
+  background-color: white;
+}
+
 .App {
   text-align: center;
 }
@@ -11,6 +15,27 @@
 
 img {
   max-width: 100%;
+  max-height: 250px;
+}
+
+.food-img {
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+}
+
+.menu a {
+  display: inline-block;
+
+  color: white;
+
+  font-size: 22px;
+
+  padding: 0 25px;
+}
+
+a:hover {
+  color: steelblue;
 }
 
 ul {
@@ -37,6 +62,41 @@ input,
 select {
   display: block;
   margin: 25px 0;
+  width: 85%;
+
+  box-sizing: border-box;
+
+  border: 0;
+  border-bottom: 2px dotted steelblue;
+
+  font-size: 22px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+}
+
+label {
+  font-size: 22px;
+}
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  border-bottom: 2px dotted steelblue;
+
+  margin: 25px 0;
+
+  width: 85%;
+}
+
+input[type='checkbox'] {
+  display: inline-block;
+  width: auto;
+  margin: 0 25px 0 0;
 }
 
 .admin-container {
@@ -64,4 +124,44 @@ select {
 
 .ingredient input {
   margin: 15px;
+}
+
+button {
+  background: transparent;
+
+  border: 2px solid steelblue;
+  border-radius: 5px;
+
+  font-size: 22px;
+
+  padding: 15px 0;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: steelblue;
+
+  color: white;
+}
+
+.indv-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  color: salmon;
+
+  width: 980px;
+
+  margin: 0 auto;
+}
+
+.indv-wrapper img {
+  max-height: 500px;
+  padding: 50px 0;
+}
+
+.indv-wrapper ul {
+  display: block;
+  text-align: left;
 }

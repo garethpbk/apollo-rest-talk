@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
+import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import MutationButton from './Mutation';
 
 export default class Admin extends Component {
   state = {
@@ -95,6 +96,7 @@ export default class Admin extends Component {
     return (
       <div className="admin-container">
         <div className="left">
+          <h2>Add a Recipe</h2>
           <input name="name" type="text" value={name} placeholder="Name..." onChange={e => this.changeHandler(e)} />
           <select name="category" value={category} onChange={e => this.changeHandler(e)}>
             <option value="Select One">Select One</option>
@@ -120,35 +122,47 @@ export default class Admin extends Component {
             placeholder="Images..."
             onChange={e => this.changeHandler(e)}
           />
-          <input
-            name="vegetarian"
-            type="checkbox"
-            checked={dietary.vegetarian}
-            onClick={e => this.checkboxHandler(e)}
-          />
-          <label htmlFor="vegetarian" onClick={e => this.checkboxHandler(e)}>
-            Vegetarian?
-          </label>
-          <input name="vegan" type="checkbox" checked={dietary.vegan} onClick={e => this.checkboxHandler(e)} />
-          <label htmlFor="vegan">Vegan?</label>
-          <input
-            name="glutenFree"
-            type="checkbox"
-            checked={dietary.glutenFree}
-            onClick={e => this.checkboxHandler(e)}
-          />
-          <label htmlFor="glutenFree">Gluten Free?</label>
+          <div className="check">
+            <input
+              name="vegetarian"
+              type="checkbox"
+              checked={dietary.vegetarian}
+              onClick={e => this.checkboxHandler(e)}
+            />
+            <label htmlFor="vegetarian" onClick={e => this.checkboxHandler(e)}>
+              Vegetarian?
+            </label>
+          </div>
+          <div className="check">
+            <input name="vegan" type="checkbox" checked={dietary.vegan} onClick={e => this.checkboxHandler(e)} />
+            <label htmlFor="vegan">Vegan?</label>
+          </div>
+          <div className="check">
+            <input
+              name="glutenFree"
+              type="checkbox"
+              checked={dietary.glutenFree}
+              onClick={e => this.checkboxHandler(e)}
+            />
+            <label htmlFor="glutenFree">Gluten Free?</label>
+          </div>
         </div>
         <div className="right">
-          {this.state.recipe.ingredients.map((ingredient, i) => {
+          <h2>Add Ingredients</h2>
+          {ingredients.map((ingredient, i) => {
             return (
               <div key={`ingredient-field-${i}`} className="ingredient">
-                <label htmlFor="ingredient.name">Name</label>
-                <input name="name" type="text" value={ingredient.name} onChange={e => this.changeIngredients(e, i)} />
-                <label htmlFor="ingredient.amount">Amount</label>
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="Name"
+                  value={ingredient.name}
+                  onChange={e => this.changeIngredients(e, i)}
+                />
                 <input
                   name="amount"
                   type="text"
+                  placeholder="Amount"
                   value={ingredient.amount}
                   onChange={e => this.changeIngredients(e, i)}
                 />
@@ -158,22 +172,31 @@ export default class Admin extends Component {
           <button onClick={() => this.addIngredient()}>Add Ingredient</button>
         </div>
         <button onClick={() => this.sendRecipe()}>Send Recipe</button>
+        <Mutation mutation={NEW_RECIPE} fetchPolicy="no-cache">
+          {(createRecipe, { data, loading, error }) => {
+            return (
+              <MutationButton createRecipe={createRecipe} recipe={this.state.recipe} loading={loading} error={error} />
+            );
+          }}
+        </Mutation>
       </div>
     );
   }
 }
 
 const NEW_RECIPE = gql`
-  recipe(input: $input) @rest(type: "Recipe", path: "/", method: "POST") {
-    name
-    category
-    description
-    ingredients
-    images
-    dietary @type(name: "Dietary") {
-      vegetarian
-      vegan
-      glutenFree
+  mutation CreateRecipe {
+    createRecipe(input: $input) @rest(type: "Recipe", path: "", method: "POST") {
+      name
+      category
+      description
+      ingredients
+      images
+      dietary @type(name: "Dietary") {
+        vegetarian
+        vegan
+        glutenFree
+      }
     }
   }
 `;
