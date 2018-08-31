@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -16,18 +17,19 @@ export default class Gql extends Component {
               <h1>GraphQL</h1>
               <ul>
                 {recipes.map(recipe => {
-                  const { name, images, dietary } = recipe;
+                  const { _id, name, images, dietary } = recipe;
                   const { vegetarian, vegan, glutenFree } = dietary;
-                  console.log(images[0]);
                   return (
                     <li key={name}>
-                      <h2>{name}</h2>
-                      <div className="food-img" style={{ backgroundImage: `url(${images[0]})` }} />
-                      <div className="dietary-container">
-                        <span>{vegetarian ? 'Veggie' : ''}</span>
-                        <span>{vegan ? 'Vegan' : ''}</span>
-                        <span>{glutenFree ? 'GF' : ''}</span>
-                      </div>
+                      <Link to={`gql/${_id}`}>
+                        <h2>{name}</h2>
+                        <div className="food-img" style={{ backgroundImage: `url(${images[0]})` }} />
+                        <div className="dietary-container">
+                          <span>{vegetarian ? 'Veggie' : ''}</span>
+                          <span>{vegan ? 'Vegan' : ''}</span>
+                          <span>{glutenFree ? 'GF' : ''}</span>
+                        </div>
+                      </Link>
                     </li>
                   );
                 })}
@@ -43,6 +45,7 @@ export default class Gql extends Component {
 const ALL_RECIPES = gql`
   query recipes {
     recipes @rest(type: "Recipe", path: "") {
+      _id
       name
       images
       dietary @type(name: "Dietary") {

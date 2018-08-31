@@ -41,7 +41,12 @@ export default class FetchIndv extends Component {
             <p>{description}</p>
             <ul>
               {ingredients.map(ingredient => {
-                return <li>{`${ingredient.name}, ${ingredient.amount}`}</li>;
+                return (
+                  <li key={ingredient.name}>
+                    <strong>{`${ingredient.name}`}</strong>
+                    {`, ${ingredient.amount}`}
+                  </li>
+                );
               })}
             </ul>
           </div>

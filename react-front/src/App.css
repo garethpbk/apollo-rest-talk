@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: white;
 }
@@ -149,7 +153,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
 
-  color: salmon;
+  color: steelblue;
 
   width: 980px;
 
@@ -164,4 +168,31 @@ button:hover {
 .indv-wrapper ul {
   display: block;
   text-align: left;
+
+  padding: 0 75px;
+}
+
+.indv-wrapper ul li {
+  box-shadow: none;
+
+  border-bottom: 1px solid steelblue;
+
+  padding: 15px 0;
+}
+
+.indv-left {
+  flex-basis: 50%;
+}
+
+.indv-right {
+  flex-basis: 50%;
+  padding: 50px 25px;
+
+  text-align: left;
+}
+
+.indv-right p {
+  font-size: 18px;
+
+  padding: 0 75px;
 }

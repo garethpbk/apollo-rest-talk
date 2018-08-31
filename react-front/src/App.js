@@ -8,6 +8,7 @@ import './App.css';
 
 import Admin from './components/Admin';
 import Gql from './components/Gql';
+import GqlIndv from './components/GqlIndv';
 import Fetch from './components/Fetch';
 import FetchIndv from './components/FetchIndv';
 
@@ -38,6 +39,7 @@ class App extends Component {
               <Route exact path="/fetch" render={props => <Fetch />} />
               <Route exact path="/admin" render={props => <Admin />} />
               <Route path="/fetch/:id" render={props => <FetchIndv props={props} />} />
+              <Route path="/gql/:id" render={props => <GqlIndv props={props} />} />
             </Switch>
           </div>
         </Router>
