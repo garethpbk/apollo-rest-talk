@@ -25,7 +25,6 @@ export default class Fetch extends Component {
           {recipes.map(recipe => {
             const { _id, name, images, dietary } = recipe;
             const { vegetarian, vegan, glutenFree } = dietary;
-            console.log(images[0]);
             return (
               <li key={name}>
                 <Link to={`fetch/${_id}`}>
