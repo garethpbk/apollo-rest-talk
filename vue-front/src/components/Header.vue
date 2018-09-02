@@ -1,6 +1,9 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
+        <router-link to="/gql">GraphQL</router-link>
+        <router-link to="/">Fetch</router-link>
+        <router-link to="/admin">Admin</router-link>
     </header>
 </template>
 

@@ -1,5 +1,14 @@
 <template>
-    <router-link :to="recipePath">
+    <router-link :to="fetchPath" v-if="!graphql">
+        <h2>{{recipe.name}}</h2>
+        <div class="food-img" :style="{backgroundImage: `url(${recipe.images[0]})`}"></div>
+        <div class="dietary-container">
+            <span>{{ recipe.dietary.vegetarian ? 'Veggie' : ''}}</span>
+            <span>{{ recipe.dietary.vegan ? 'Vegan' : '' }}</span>
+            <span>{{ recipe.dietary.glutenFree ? 'GF' : '' }}</span>
+        </div>
+    </router-link>
+    <router-link :to="gqlPath" v-else>
         <h2>{{recipe.name}}</h2>
         <div class="food-img" :style="{backgroundImage: `url(${recipe.images[0]})`}"></div>
         <div class="dietary-container">
@@ -12,10 +21,16 @@
 
 <script>
 export default {
-  props: ['recipe'],
+  props: {
+    recipe: Object,
+    graphql: Boolean,
+  },
   computed: {
-    recipePath: function() {
+    fetchPath: function() {
       return `/fetch/${this.recipe._id}`;
+    },
+    gqlPath: function() {
+      return `/gql/${this.recipe._id}`;
     },
   },
 };

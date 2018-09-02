@@ -1,38 +1,44 @@
 <template>
     <div>
-        <h1>Fetch</h1>
+        <h1>GraphQL</h1>
+        <h4 v-if="loading">Loading...</h4>
         <ul>
           <li :key="recipe._id" v-for="recipe in recipes">
-              <Recipe :recipe="recipe" :graphql="false" />
+              <Recipe :recipe="recipe" :graphql="true" />
           </li>
         </ul>
       </div>
 </template>
 
 <script>
+import gql from 'graphql-tag';
 import Recipe from './Recipe.vue';
 
+const ALL_RECIPES = gql`
+  query AllRecipes {
+    recipes @rest(type: "Recipe", path: "") {
+      _id
+      name
+      images
+      dietary @type(name: "Dietary") {
+        vegetarian
+        vegan
+        glutenFree
+      }
+    }
+  }
+`;
+
 export default {
-  name: 'Fetch',
+  name: 'Gql',
+  apollo: {
+    recipes: ALL_RECIPES,
+  },
   data() {
     return {
       recipes: [],
+      loading: 0,
     };
-  },
-  created: function() {
-    this.fetchRecipes();
-  },
-  methods: {
-    fetchRecipes: async function() {
-      try {
-        const res = await fetch('http://localhost:6969/api/recipes/');
-        const recipes = await res.json();
-        this.recipes = recipes;
-      } catch (e) {
-        /* eslint-disable-next-line */
-        console.log(e);
-      }
-    },
   },
   components: {
     Recipe,
