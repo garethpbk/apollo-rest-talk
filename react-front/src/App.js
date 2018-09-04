@@ -20,6 +20,7 @@ const restLink = new RestLink({
 const client = new ApolloClient({
   link: restLink,
   cache: new InMemoryCache(),
+  connectToDevTools: true,
 });
 
 class App extends Component {

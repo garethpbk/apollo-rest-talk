@@ -43,7 +43,7 @@ export default class Gql extends Component {
 }
 
 const ALL_RECIPES = gql`
-  query recipes {
+  query AllRecipes {
     recipes @rest(type: "Recipe", path: "") {
       _id
       name
