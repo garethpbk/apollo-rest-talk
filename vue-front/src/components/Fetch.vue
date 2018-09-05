@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h1>Fetch</h1>
-        <ul>
-          <li :key="recipe._id" v-for="recipe in recipes">
+        <h2>Fetch</h2>
+        <ul class="cards">
+          <li class="card" :key="recipe._id" v-for="recipe in recipes">
               <Recipe :recipe="recipe" :graphql="false" />
           </li>
         </ul>
@@ -41,17 +41,4 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  display: grid;
-  list-style: none;
-  padding: 1rem;
-  margin: 0;
-  grid-column-gap: 2rem;
-  grid-row-gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-li {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
 </style>

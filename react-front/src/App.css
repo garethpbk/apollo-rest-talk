@@ -6,6 +6,15 @@ body {
   background-color: white;
 }
 
+img {
+  max-width: 100%;
+  max-height: 250px;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
 .App {
   text-align: center;
 }
@@ -15,11 +24,6 @@ body {
   height: 150px;
   padding: 20px;
   color: white;
-}
-
-img {
-  max-width: 100%;
-  max-height: 250px;
 }
 
 .food-img {

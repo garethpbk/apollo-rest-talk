@@ -1,6 +1,6 @@
 <template>
     <router-link :to="fetchPath" v-if="!graphql">
-        <h2>{{recipe.name}}</h2>
+        <h3>{{recipe.name}}</h3>
         <div class="food-img" :style="{backgroundImage: `url(${recipe.images[0]})`}"></div>
         <div class="dietary-container">
             <span>{{ recipe.dietary.vegetarian ? 'Veggie' : ''}}</span>
@@ -9,7 +9,7 @@
         </div>
     </router-link>
     <router-link :to="gqlPath" v-else>
-        <h2>{{recipe.name}}</h2>
+        <h3>{{recipe.name}}</h3>
         <div class="food-img" :style="{backgroundImage: `url(${recipe.images[0]})`}"></div>
         <div class="dietary-container">
             <span>{{ recipe.dietary.vegetarian ? 'Veggie' : ''}}</span>
@@ -37,8 +37,25 @@ export default {
 </script>
 
 <style scoped>
+h3 {
+  color: #323232;
+  font-size: 2rem;
+  text-align: left;
+
+  padding: 0 25px;
+}
+
+h3:hover {
+  color: steelblue;
+}
+
+a {
+  text-decoration: none;
+}
+
 .food-img {
   height: 350px;
+
   background-size: cover;
   background-position: center;
 }
@@ -46,6 +63,7 @@ export default {
 .dietary-container {
   display: flex;
   justify-content: space-between;
+
   padding: 15px 20px;
 }
 </style>

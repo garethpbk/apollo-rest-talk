@@ -1,10 +1,12 @@
 <template>
     <div>
-        <h2>Individual Fetch</h2>
-        <div class="indv-wrapper">
+        <h2>Individual GraphQL</h2>
+        <!-- for some reason this can't just be loading, but works in Gql.vue...? -->
+        <h4 v-if="$apollo.loading">Loading...</h4>
+        <div v-else class="indv-wrapper">
             <div class="indv-left card">
                 <h4>{{ recipe.name }}</h4>
-            <img :src="recipeImage" />
+            <img :src="recipe.images[0]" />
             </div>
             <div class="indv-right card">
             <p>{{ recipe.description }}</p>
@@ -19,30 +21,46 @@
 </template>
 
 <script>
+import gql from 'graphql-tag';
+
+const GET_RECIPE = gql`
+  query recipe($id: ID!) {
+    recipe(id: $id) @rest(type: "Recipe", path: "{args.id}") {
+      name
+      category
+      description
+      ingredients
+      images
+      dietary @type(name: "Dietary") {
+        vegetarian
+        vegan
+        glutenFree
+      }
+    }
+  }
+`;
+
 export default {
-  data() {
-    return {
-      recipe: {},
-    };
-  },
-  created: function() {
-    this.fetchRecipe();
-  },
-  computed: {
-    recipeImage: function() {
-      return this.recipe.images ? this.recipe.images[0] : null;
+  name: 'Gql',
+  apollo: {
+    recipe: {
+      query: GET_RECIPE,
+      variables() {
+        return {
+          id: this.recipePath,
+        };
+      },
     },
   },
-  methods: {
-    fetchRecipe: async function() {
-      try {
-        const res = await fetch(`http://localhost:6969/api/recipes/${this.$route.params.id}`);
-        const recipe = await res.json();
-        this.recipe = recipe;
-      } catch (e) {
-        /* eslint-disable-next-line */
-        console.log(e);
-      }
+  data() {
+    return {
+      recipes: {},
+      loading: 0,
+    };
+  },
+  computed: {
+    recipePath: function() {
+      return this.$route.params.id;
     },
   },
 };

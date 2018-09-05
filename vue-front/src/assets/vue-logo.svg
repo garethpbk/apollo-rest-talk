@@ -1,0 +1,22 @@
+<svg id="svg2" xmlns="http://www.w3.org/2000/svg" width="261.76" height="226.69" viewBox="0 0 261.76 226.69">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4dba87;
+      }
+
+      .cls-2 {
+        fill: #435466;
+      }
+    </style>
+  </defs>
+  <title>vue-logo</title>
+  <g id="g10">
+    <g id="g12">
+      <path id="path14" class="cls-1" d="M161.11,0,130.88,52.35,100.65,0H0L130.88,226.69,261.76,0Z"/>
+    </g>
+    <g id="g16">
+      <path id="path18" class="cls-2" d="M161.11,0,130.88,52.35,100.65,0H52.35l78.53,136L209.41,0Z"/>
+    </g>
+  </g>
+</svg>
