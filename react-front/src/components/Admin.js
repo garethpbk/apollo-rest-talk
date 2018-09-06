@@ -102,8 +102,8 @@ export default class Admin extends Component {
     } = this.state.recipe;
     return (
       <div className="admin-container">
-        <div className="left">
-          <h2>Add a Recipe</h2>
+        <div className="left card">
+          <h3>Add a Recipe</h3>
           <input
             name="name"
             type="text"
@@ -169,8 +169,8 @@ export default class Admin extends Component {
             <label htmlFor="glutenFree">Gluten Free?</label>
           </div>
         </div>
-        <div className="right">
-          <h2>Add Ingredients</h2>
+        <div className="right card">
+          <h3>Add Ingredients</h3>
           {ingredients.map((ingredient, i) => {
             return (
               <div key={`ingredient-field-${i}`} className="ingredient">
@@ -191,21 +191,25 @@ export default class Admin extends Component {
               </div>
             );
           })}
-          <button onClick={() => this.addIngredient()}>Add Ingredient</button>
+          <button onClick={() => this.addIngredient()}>
+            Add Another Ingredient
+          </button>
         </div>
-        <button onClick={() => this.sendRecipe()}>Send Recipe</button>
-        <Mutation mutation={NEW_RECIPE} fetchPolicy="no-cache">
-          {(createRecipe, { data, loading, error }) => {
-            return (
-              <MutationButton
-                createRecipe={createRecipe}
-                recipe={this.state.recipe}
-                loading={loading}
-                error={error}
-              />
-            );
-          }}
-        </Mutation>
+        <div className="send">
+          <button onClick={() => this.sendRecipe()}>Post via Fetch</button>
+          <Mutation mutation={NEW_RECIPE} fetchPolicy="no-cache">
+            {(createRecipe, { data, loading, error }) => {
+              return (
+                <MutationButton
+                  createRecipe={createRecipe}
+                  recipe={this.state.recipe}
+                  loading={loading}
+                  error={error}
+                />
+              );
+            }}
+          </Mutation>
+        </div>
       </div>
     );
   }

@@ -13,7 +13,7 @@ export default {
   name: 'Header',
   data() {
     return {
-      title: 'Raucous Recipes',
+      title: 'Vivacious Viands',
     };
   },
 };

@@ -59,7 +59,7 @@ select {
   box-sizing: border-box;
 
   border: 0;
-  border-bottom: 2px dotted steelblue;
+  border-bottom: 1px solid steelblue;
 
   font-size: 22px;
 }
@@ -78,7 +78,7 @@ label {
   align-items: flex-start;
   justify-content: flex-start;
 
-  border-bottom: 2px dotted steelblue;
+  border-bottom: 1px solid steelblue;
 
   margin: 25px 0;
 
@@ -99,15 +99,47 @@ input[type='checkbox'] {
   align-items: flex-start;
 }
 
-.left {
-  width: 50%;
-}
-
+.left,
 .right {
   width: 50%;
 
+  padding: 5px 25px;
+}
+
+.left h3,
+.right h3 {
+  font-size: 24px;
+}
+
+.right {
   display: flex;
   flex-direction: column;
+
+  margin: 0 50px;
+}
+
+.right button,
+.send button {
+  background-color: #4dba87;
+
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+
+  margin: 25px;
+  padding: 10px 15px;
+
+  cursor: pointer;
+}
+
+.right button:hover,
+.send button:hover {
+  color: steelblue;
 }
 
 .ingredient {
@@ -118,21 +150,7 @@ input[type='checkbox'] {
   margin: 15px;
 }
 
-button {
-  background: transparent;
-
-  border: 2px solid steelblue;
-  border-radius: 5px;
-
-  font-size: 22px;
-
-  padding: 15px 0;
-
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: steelblue;
-
-  color: white;
+.send {
+  display: flex;
+  flex-direction: column;
 }
