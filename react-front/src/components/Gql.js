@@ -14,16 +14,19 @@ export default class Gql extends Component {
 
           return (
             <div>
-              <h1>GraphQL</h1>
-              <ul>
+              <h2>GraphQL</h2>
+              <ul className="cards">
                 {recipes.map(recipe => {
                   const { _id, name, images, dietary } = recipe;
                   const { vegetarian, vegan, glutenFree } = dietary;
                   return (
-                    <li key={name}>
+                    <li className="card" key={name}>
                       <Link to={`gql/${_id}`}>
-                        <h2>{name}</h2>
-                        <div className="food-img" style={{ backgroundImage: `url(${images[0]})` }} />
+                        <h3>{name}</h3>
+                        <div
+                          className="food-img"
+                          style={{ backgroundImage: `url(${images[0]})` }}
+                        />
                         <div className="dietary-container">
                           <span>{vegetarian ? 'Veggie' : ''}</span>
                           <span>{vegan ? 'Vegan' : ''}</span>
@@ -56,20 +59,3 @@ const ALL_RECIPES = gql`
     }
   }
 `;
-
-// const query = gql`
-//   query tacos {
-//     recipe @rest(type: "Recipe", path: "5b73a0f4d774cf297481abf4") {
-//       name
-//       category
-//       description
-//       ingredients
-//       images
-//       dietary @type(name: "Dietary") {
-//         vegetarian
-//         vegan
-//         glutenFree
-//       }
-//     }
-//   }
-// `;

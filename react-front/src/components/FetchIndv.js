@@ -11,9 +11,9 @@ export default class FetchIndv extends Component {
       dietary: {
         vegetarian: false,
         vegan: false,
-        glutenFree: false,
-      },
-    },
+        glutenFree: false
+      }
+    }
   };
 
   componentWillMount = () => {
@@ -28,16 +28,23 @@ export default class FetchIndv extends Component {
       });
   };
   render() {
-    const { name, category, description, images, ingredients, dietary } = this.state.recipe;
+    const {
+      name,
+      category,
+      description,
+      images,
+      ingredients,
+      dietary
+    } = this.state.recipe;
     return (
       <div>
-        <h1>Individual Fetch</h1>
+        <h2>Individual Fetch</h2>
         <div className="indv-wrapper">
-          <div className="indv-left">
-            <h1>{name}</h1>
-            <img src={images[0]} />
+          <div className="indv-left card">
+            <h4>{name}</h4>
+            <img src={images[0]} alt={name} />
           </div>
-          <div className="indv-right">
+          <div className="indv-right card">
             <p>{description}</p>
             <ul>
               {ingredients.map(ingredient => {

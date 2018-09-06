@@ -25,8 +25,6 @@ header {
 
   color: white;
 
-  height: 150px;
-
   margin: 0 0 50px 0;
   padding: 20px;
 

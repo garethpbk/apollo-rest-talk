@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -8,22 +7,29 @@ export default class GqlInd extends Component {
     const id = this.props.props.match.params.id;
     console.log(id);
     return (
-      <div>
-        <h1>Individual GraphQL</h1>
+      <Fragment>
+        <h2>Individual GraphQL</h2>
         <Query query={GET_RECIPE} variables={{ id }}>
           {({ data, loading }) => {
             if (loading) return 'Loading...';
 
             const { recipe } = data;
-            const { name, category, description, images, ingredients, dietary } = recipe;
+            const {
+              name,
+              category,
+              description,
+              images,
+              ingredients,
+              dietary
+            } = recipe;
             return (
               <div>
                 <div className="indv-wrapper">
-                  <div className="indv-left">
-                    <h1>{name}</h1>
-                    <img src={images[0]} />
+                  <div className="indv-left card">
+                    <h4>{name}</h4>
+                    <img src={images[0]} alt={name} />
                   </div>
-                  <div className="indv-right">
+                  <div className="indv-right card">
                     <p>{description}</p>
                     <ul>
                       {ingredients.map(ingredient => {
@@ -41,7 +47,7 @@ export default class GqlInd extends Component {
             );
           }}
         </Query>
-      </div>
+      </Fragment>
     );
   }
 }

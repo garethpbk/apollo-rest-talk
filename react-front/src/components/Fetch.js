@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default class Fetch extends Component {
   state = {
-    recipes: [],
+    recipes: []
   };
 
   componentWillMount = () => {
@@ -20,16 +20,19 @@ export default class Fetch extends Component {
     const { recipes } = this.state;
     return (
       <div>
-        <h1>Fetch</h1>
-        <ul>
+        <h2>Fetch</h2>
+        <ul className="cards">
           {recipes.map(recipe => {
             const { _id, name, images, dietary } = recipe;
             const { vegetarian, vegan, glutenFree } = dietary;
             return (
-              <li key={name}>
+              <li className="card" key={name}>
                 <Link to={`fetch/${_id}`}>
-                  <h2>{name}</h2>
-                  <div className="food-img" style={{ backgroundImage: `url(${images[0]})` }} />
+                  <h3>{name}</h3>
+                  <div
+                    className="food-img"
+                    style={{ backgroundImage: `url(${images[0]})` }}
+                  />
                 </Link>
                 <div className="dietary-container">
                   <span>{vegetarian ? 'Veggie' : ''}</span>

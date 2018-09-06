@@ -17,13 +17,7 @@ h2 {
 
 .App {
   text-align: center;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  color: #2c3e50;
 }
 
 .food-img {
@@ -35,29 +29,19 @@ h2 {
 .menu a {
   display: inline-block;
 
+  background-color: #4dba87;
+
+  border-radius: 5px;
+
   color: white;
 
-  font-size: 22px;
+  font-size: 16px;
+  text-decoration: none;
 
-  padding: 0 25px;
-}
+  margin: 0 25px;
+  padding: 10px 15px;
 
-a:hover {
-  color: steelblue;
-}
-
-ul {
-  display: grid;
-  list-style: none;
-  padding: 1rem;
-  margin: 0;
-  grid-column-gap: 2rem;
-  grid-row-gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-li {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .dietary-container {
@@ -151,52 +135,4 @@ button:hover {
   background-color: steelblue;
 
   color: white;
-}
-
-.indv-wrapper {
-  display: flex;
-  justify-content: space-between;
-
-  color: steelblue;
-
-  width: 980px;
-
-  margin: 0 auto;
-}
-
-.indv-wrapper img {
-  max-height: 500px;
-  padding: 50px 0;
-}
-
-.indv-wrapper ul {
-  display: block;
-  text-align: left;
-
-  padding: 0 75px;
-}
-
-.indv-wrapper ul li {
-  box-shadow: none;
-
-  border-bottom: 1px solid steelblue;
-
-  padding: 15px 0;
-}
-
-.indv-left {
-  flex-basis: 50%;
-}
-
-.indv-right {
-  flex-basis: 50%;
-  padding: 50px 25px;
-
-  text-align: left;
-}
-
-.indv-right p {
-  font-size: 18px;
-
-  padding: 0 75px;
 }

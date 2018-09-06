@@ -14,13 +14,13 @@ import FetchIndv from './components/FetchIndv';
 
 const restLink = new RestLink({
   uri: 'http://localhost:6969/api/recipes/',
-  credentials: null,
+  credentials: null
 });
 
 const client = new ApolloClient({
   link: restLink,
   cache: new InMemoryCache(),
-  connectToDevTools: true,
+  connectToDevTools: true
 });
 
 class App extends Component {
@@ -29,8 +29,9 @@ class App extends Component {
       <ApolloProvider client={client}>
         <Router>
           <div className="App">
-            <header className="App-header menu">
-              <h1 className="App-title">Raucous Recipes</h1>
+            <header className="menu">
+              <div className="background-logo" />
+              <h1>Raucous Recipes</h1>
               <Link to="/">GraphQL</Link>
               <Link to="/fetch">Fetch</Link>
               <Link to="/admin">Admin</Link>
@@ -39,8 +40,14 @@ class App extends Component {
               <Route exact path="/" render={props => <Gql />} />
               <Route exact path="/fetch" render={props => <Fetch />} />
               <Route exact path="/admin" render={props => <Admin />} />
-              <Route path="/fetch/:id" render={props => <FetchIndv props={props} />} />
-              <Route path="/gql/:id" render={props => <GqlIndv props={props} />} />
+              <Route
+                path="/fetch/:id"
+                render={props => <FetchIndv props={props} />}
+              />
+              <Route
+                path="/gql/:id"
+                render={props => <GqlIndv props={props} />}
+              />
             </Switch>
           </div>
         </Router>

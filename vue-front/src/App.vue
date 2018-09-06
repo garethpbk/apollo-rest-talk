@@ -11,13 +11,17 @@ import Header from './components/Header.vue';
 export default {
   name: 'app',
   components: {
-    Header,
-  },
+    Header
+  }
 };
 </script>
 
 <style>
 @import 'https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c|Montserrat';
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   background-image: url('./assets/pattern-bg.png');
