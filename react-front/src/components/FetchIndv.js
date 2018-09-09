@@ -11,15 +11,15 @@ export default class FetchIndv extends Component {
       dietary: {
         vegetarian: false,
         vegan: false,
-        glutenFree: false
-      }
-    }
+        glutenFree: false,
+      },
+    },
   };
 
   componentWillMount = () => {
     const id = this.props.props.match.params.id;
 
-    fetch(`http://localhost:6969/api/recipes/${id}`)
+    fetch(`http://recipe.garethbk.com/api/recipes/${id}`)
       .then(res => {
         return res.json();
       })
@@ -28,14 +28,7 @@ export default class FetchIndv extends Component {
       });
   };
   render() {
-    const {
-      name,
-      category,
-      description,
-      images,
-      ingredients,
-      dietary
-    } = this.state.recipe;
+    const { name, category, description, images, ingredients, dietary } = this.state.recipe;
     return (
       <div>
         <h2>Individual Fetch</h2>

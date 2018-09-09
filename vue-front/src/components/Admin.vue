@@ -106,7 +106,7 @@ export default {
 
       recipeToSend.images = images;
 
-      const rawResponse = await fetch('http://localhost:6969/api/recipes/', {
+      const rawResponse = await fetch('http://recipe.garethbk.com/api/recipes/', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

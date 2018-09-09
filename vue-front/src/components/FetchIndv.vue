@@ -36,7 +36,7 @@ export default {
   methods: {
     fetchRecipe: async function() {
       try {
-        const res = await fetch(`http://localhost:6969/api/recipes/${this.$route.params.id}`);
+        const res = await fetch(`http://recipe.garethbk.com/api/recipes/${this.$route.params.id}`);
         const recipe = await res.json();
         this.recipe = recipe;
       } catch (e) {

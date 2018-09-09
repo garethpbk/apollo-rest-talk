@@ -12,12 +12,12 @@ export default class Admin extends Component {
       ingredients: [
         {
           name: '',
-          amount: ''
-        }
+          amount: '',
+        },
       ],
       images: [],
-      dietary: { vegetarian: false, vegan: false, glutenFree: false }
-    }
+      dietary: { vegetarian: false, vegan: false, glutenFree: false },
+    },
   };
 
   changeHandler = e => {
@@ -29,7 +29,7 @@ export default class Admin extends Component {
     updateObj[name] = value;
 
     this.setState({
-      recipe: updateObj
+      recipe: updateObj,
     });
   };
 
@@ -41,7 +41,7 @@ export default class Admin extends Component {
     updateObj.dietary[name] = !updateObj.dietary[name];
 
     this.setState({
-      recipe: updateObj
+      recipe: updateObj,
     });
   };
 
@@ -53,7 +53,7 @@ export default class Admin extends Component {
     updateObj.ingredients[i][name] = value;
 
     this.setState({
-      recipe: updateObj
+      recipe: updateObj,
     });
   };
 
@@ -65,7 +65,7 @@ export default class Admin extends Component {
     console.log(updateObj);
 
     this.setState({
-      recipe: updateObj
+      recipe: updateObj,
     });
   };
 
@@ -77,13 +77,13 @@ export default class Admin extends Component {
 
     recipeToSend.images = images;
 
-    const rawResponse = await fetch('http://localhost:6969/api/recipes/', {
+    const rawResponse = await fetch('http://recipe.garethbk.com/api/recipes/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(recipeToSend)
+      body: JSON.stringify(recipeToSend),
     });
 
     const content = await rawResponse.json();
@@ -92,30 +92,13 @@ export default class Admin extends Component {
   };
 
   render() {
-    const {
-      name,
-      category,
-      description,
-      ingredients,
-      images,
-      dietary
-    } = this.state.recipe;
+    const { name, category, description, ingredients, images, dietary } = this.state.recipe;
     return (
       <div className="admin-container">
         <div className="left card">
           <h3>Add a Recipe</h3>
-          <input
-            name="name"
-            type="text"
-            value={name}
-            placeholder="Name..."
-            onChange={e => this.changeHandler(e)}
-          />
-          <select
-            name="category"
-            value={category}
-            onChange={e => this.changeHandler(e)}
-          >
+          <input name="name" type="text" value={name} placeholder="Name..." onChange={e => this.changeHandler(e)} />
+          <select name="category" value={category} onChange={e => this.changeHandler(e)}>
             <option value="Select One">Select One</option>
             <option value="Breakfast">Breakfast</option>
             <option value="Second Breakfast">Second Breakfast</option>
@@ -151,12 +134,7 @@ export default class Admin extends Component {
             </label>
           </div>
           <div className="check">
-            <input
-              name="vegan"
-              type="checkbox"
-              checked={dietary.vegan}
-              onClick={e => this.checkboxHandler(e)}
-            />
+            <input name="vegan" type="checkbox" checked={dietary.vegan} onClick={e => this.checkboxHandler(e)} />
             <label htmlFor="vegan">Vegan?</label>
           </div>
           <div className="check">
@@ -191,9 +169,7 @@ export default class Admin extends Component {
               </div>
             );
           })}
-          <button onClick={() => this.addIngredient()}>
-            Add Another Ingredient
-          </button>
+          <button onClick={() => this.addIngredient()}>Add Another Ingredient</button>
         </div>
         <div className="send">
           <button onClick={() => this.sendRecipe()}>Post via Fetch</button>
@@ -217,8 +193,7 @@ export default class Admin extends Component {
 
 const NEW_RECIPE = gql`
   mutation CreateRecipe {
-    createRecipe(input: $input)
-      @rest(type: "Recipe", path: "", method: "POST") {
+    createRecipe(input: $input) @rest(type: "Recipe", path: "", method: "POST") {
       name
       category
       description
