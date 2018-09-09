@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>GraphQL</h2>
-        <h4 v-if="loading">Loading...</h4>
+        <h4 v-if="loading"><Spinner /></h4>
         <ul class="cards">
           <li class="card" :key="recipe._id" v-for="recipe in recipes">
               <Recipe :recipe="recipe" :graphql="true" />
@@ -13,6 +13,7 @@
 <script>
 import gql from 'graphql-tag';
 import Recipe from './Recipe.vue';
+import Spinner from './Spinner.vue';
 
 const ALL_RECIPES = gql`
   query AllRecipes {
@@ -42,6 +43,7 @@ export default {
   },
   components: {
     Recipe,
+    Spinner,
   },
 };
 </script>

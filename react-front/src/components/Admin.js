@@ -18,6 +18,10 @@ export default class Admin extends Component {
       images: [],
       dietary: { vegetarian: false, vegan: false, glutenFree: false },
     },
+    fetchError: '',
+    gqlError: '',
+    ingredientsError: '',
+    successMessage: '',
   };
 
   changeHandler = e => {
@@ -28,9 +32,9 @@ export default class Admin extends Component {
 
     updateObj[name] = value;
 
-    this.setState({
+    this.setState(() => ({
       recipe: updateObj,
-    });
+    }));
   };
 
   checkboxHandler = e => {
@@ -40,9 +44,9 @@ export default class Admin extends Component {
 
     updateObj.dietary[name] = !updateObj.dietary[name];
 
-    this.setState({
+    this.setState(() => ({
       recipe: updateObj,
-    });
+    }));
   };
 
   changeIngredients = (e, i) => {
@@ -52,9 +56,9 @@ export default class Admin extends Component {
 
     updateObj.ingredients[i][name] = value;
 
-    this.setState({
+    this.setState(() => ({
       recipe: updateObj,
-    });
+    }));
   };
 
   addIngredient = () => {
@@ -62,11 +66,64 @@ export default class Admin extends Component {
 
     updateObj.ingredients.push({ name: '', amount: '' });
 
-    console.log(updateObj);
-
-    this.setState({
+    this.setState(() => ({
       recipe: updateObj,
-    });
+    }));
+  };
+
+  removeIngredient = () => {
+    const updateObj = { ...this.state.recipe };
+    let error = this.state.ingredientsError;
+
+    if (updateObj.ingredients.length > 1) {
+      updateObj.ingredients.pop();
+      error = '';
+    } else {
+      error = 'You must have at least one ingredient!';
+    }
+
+    this.setState(() => ({
+      recipe: updateObj,
+      ingredientsError: error,
+    }));
+  };
+
+  // quick and dirty form validation for fetch to make sure each field has something in it/selected
+  validateFetch = async () => {
+    const fields = { ...this.state.recipe };
+
+    const { name, category, description, ingredients, images } = fields;
+
+    if (
+      name.length === 0 ||
+      category.length === 0 ||
+      category === 'Select One' ||
+      description.length === 0 ||
+      ingredients[0].name.length === 0 ||
+      ingredients[0].amount.length === 0 ||
+      images.length === 0
+    ) {
+      await this.setState(() => ({
+        fetchError: 'Fetch Error!  Please ensure all fields are filled out.',
+      }));
+    } else {
+      await this.setState(() => ({
+        fetchError: '',
+      }));
+
+      this.sendRecipe();
+    }
+  };
+
+  setGqlError = error => {
+    if (error) {
+      this.setState(() => ({ gqlError: 'GraphQL Error!  Please ensure all fields are filled out.' }));
+    } else {
+      this.setState(() => ({
+        gqlError: '',
+        successMessage: 'Recipe successfuly sent via GraphQL!',
+      }));
+    }
   };
 
   sendRecipe = async () => {
@@ -86,9 +143,29 @@ export default class Admin extends Component {
       body: JSON.stringify(recipeToSend),
     });
 
-    const content = await rawResponse.json();
+    await this.clearRecipe();
 
-    console.log(content);
+    this.setState(() => ({
+      successMessage: 'Recipe successfully sent via fetch!',
+    }));
+  };
+
+  clearRecipe = () => {
+    this.setState(() => ({
+      recipe: {
+        name: '',
+        category: '',
+        description: '',
+        ingredients: [
+          {
+            name: '',
+            amount: '',
+          },
+        ],
+        images: [],
+        dietary: { vegetarian: false, vegan: false, glutenFree: false },
+      },
+    }));
   };
 
   render() {
@@ -170,9 +247,11 @@ export default class Admin extends Component {
             );
           })}
           <button onClick={() => this.addIngredient()}>Add Another Ingredient</button>
+          <button onClick={() => this.removeIngredient()}>Remove Last Ingredient</button>
+          <p className="error">{this.state.ingredientsError}</p>
         </div>
-        <div className="send">
-          <button onClick={() => this.sendRecipe()}>Post via Fetch</button>
+        <div className="send card">
+          <button onClick={() => this.validateFetch()}>Post via Fetch</button>
           <Mutation mutation={NEW_RECIPE} fetchPolicy="no-cache">
             {(createRecipe, { data, loading, error }) => {
               return (
@@ -181,10 +260,15 @@ export default class Admin extends Component {
                   recipe={this.state.recipe}
                   loading={loading}
                   error={error}
+                  setGqlError={this.setGqlError}
+                  clearRecipe={this.clearRecipe}
                 />
               );
             }}
           </Mutation>
+          <p className="error">{this.state.fetchError}</p>
+          <p className="error">{this.state.gqlError}</p>
+          <p className="success">{this.state.successMessage}</p>
         </div>
       </div>
     );

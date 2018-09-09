@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import Spinner from './Spinner';
 
 export default class GqlInd extends Component {
   render() {
@@ -11,17 +12,10 @@ export default class GqlInd extends Component {
         <h2>Individual GraphQL</h2>
         <Query query={GET_RECIPE} variables={{ id }}>
           {({ data, loading }) => {
-            if (loading) return 'Loading...';
+            if (loading) return <Spinner />;
 
             const { recipe } = data;
-            const {
-              name,
-              category,
-              description,
-              images,
-              ingredients,
-              dietary
-            } = recipe;
+            const { name, category, description, images, ingredients, dietary } = recipe;
             return (
               <div>
                 <div className="indv-wrapper">
