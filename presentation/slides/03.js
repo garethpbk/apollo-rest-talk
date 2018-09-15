@@ -34,7 +34,7 @@ const Logo = styled.img`
   }
 `;
 
-export default props => (
+export default () => (
   <ModSlide transition={['zoom']} bgColor="primary">
     <Header textColor="secondary">
       Apollo

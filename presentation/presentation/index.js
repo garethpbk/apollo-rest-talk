@@ -21,6 +21,9 @@ import createTheme from 'spectacle/lib/themes/default';
 import SlideOne from '../slides/01';
 import SlideTwo from '../slides/02';
 import SlideThree from '../slides/03';
+import SlideFour from '../slides/04';
+import SlideFive from '../slides/05';
+import SlideSix from '../slides/06';
 
 // Require CSS
 require('normalize.css');
@@ -45,6 +48,9 @@ export default class Presentation extends React.Component {
         <SlideOne />
         <SlideTwo />
         <SlideThree />
+        <SlideFour />
+        <SlideFive />
+        {/* <SlideSix /> */}
         <Slide transition={['fade']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
             Typography

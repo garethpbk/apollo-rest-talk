@@ -26,7 +26,7 @@ const SmallText = styled(Text)`
   font-size: 2rem !important;
 `;
 
-export default props => (
+export default () => (
   <Slide bgColor="primary">
     <Header textColor="secondary">Try GraphQL with Apollo Client</Header>
     <Text margin="50px 0" textColor="tertiary" size={2}>

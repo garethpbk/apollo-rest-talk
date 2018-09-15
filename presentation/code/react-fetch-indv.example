@@ -1,0 +1,26 @@
+state = {
+  recipe: {
+    name: '',
+    category: '',
+    description: '',
+    images: [],
+    ingredients: [],
+    dietary: {
+      vegetarian: false,
+      vegan: false,
+      glutenFree: false
+    }
+  }
+};
+
+componentWillMount = () => {
+  const id = this.props.props.match.params.id;
+
+  fetch(`http://recipe.gareth.cool/api/recipes/${id}`)
+    .then(res => {
+      return res.json();
+    })
+    .then(resJson => {
+      this.setState({ recipe: resJson });
+    });
+};

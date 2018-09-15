@@ -1,0 +1,13 @@
+state = {
+  recipes: []
+};
+
+componentWillMount = () => {
+  fetch('http://recipe.gareth.cool/api/recipes/')
+    .then(res => {
+      return res.json();
+    })
+    .then(resJson => {
+      this.setState({ recipes: resJson });
+    });
+};
