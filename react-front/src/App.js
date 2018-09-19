@@ -13,7 +13,7 @@ import Fetch from './components/Fetch';
 import FetchIndv from './components/FetchIndv';
 
 const restLink = new RestLink({
-  uri: 'http://recipe.garethbk.com/api/recipes/',
+  uri: 'http://recipe.gareth.cool/api/recipes/',
   credentials: null,
 });
 

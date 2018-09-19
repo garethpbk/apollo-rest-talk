@@ -129,7 +129,7 @@ export default {
       recipeToSend.images = images;
 
       // eslint-disable-next-line
-      const rawResponse = await fetch('http://recipe.garethbk.com/api/recipes/', {
+      const rawResponse = await fetch('http://recipe.gareth.cool/api/recipes/', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
