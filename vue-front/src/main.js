@@ -9,7 +9,7 @@ import VueApollo from 'vue-apollo';
 Vue.config.productionTip = false;
 
 const restLink = new RestLink({
-  uri: 'http://recipe.garethbk.com/api/recipes/',
+  uri: 'http://recipe.gareth.cool/api/recipes/',
   credentials: null,
 });
 

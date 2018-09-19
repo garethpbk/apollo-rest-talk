@@ -7,7 +7,7 @@ export default class Fetch extends Component {
   };
 
   componentWillMount = () => {
-    fetch('http://recipe.garethbk.com/api/recipes/')
+    fetch('http://recipe.gareth.cool/api/recipes/')
       .then(res => {
         return res.json();
       })
