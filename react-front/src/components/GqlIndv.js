@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import Spinner from './Spinner';
+import { GET_RECIPE } from '../queries/Recipes';
 
 export default class GqlInd extends Component {
   render() {
@@ -45,20 +45,3 @@ export default class GqlInd extends Component {
     );
   }
 }
-
-const GET_RECIPE = gql`
-  query recipe($id: ID!) {
-    recipe(id: $id) @rest(type: "Recipe", path: "{args.id}") {
-      name
-      category
-      description
-      ingredients
-      images
-      dietary @type(name: "Dietary") {
-        vegetarian
-        vegan
-        glutenFree
-      }
-    }
-  }
-`;

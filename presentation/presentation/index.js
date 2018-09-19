@@ -2,17 +2,7 @@
 import React from 'react';
 
 // Import Spectacle Core tags
-import {
-  BlockQuote,
-  Cite,
-  Deck,
-  Heading,
-  ListItem,
-  List,
-  Quote,
-  Slide,
-  Text
-} from 'spectacle';
+import { BlockQuote, Cite, Deck, Heading, ListItem, List, Quote, Slide, Text } from 'spectacle';
 
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
@@ -33,11 +23,11 @@ const theme = createTheme(
     primary: 'white',
     secondary: '#1F2022',
     tertiary: '#03A9FC',
-    quaternary: '#CECECE'
+    quaternary: '#CECECE',
   },
   {
     primary: 'Montserrat',
-    secondary: 'Helvetica'
+    secondary: 'Helvetica',
   }
 );
 
