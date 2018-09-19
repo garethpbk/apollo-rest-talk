@@ -1,0 +1,14 @@
+{
+  recipe {
+    name
+    category
+    description
+    ingredients
+    images
+    dietary {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+}

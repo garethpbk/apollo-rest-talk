@@ -92,7 +92,7 @@ input[type='checkbox'] {
 }
 
 .admin-container {
-  max-width: 980px;
+  max-width: 1200px;
   margin: 0 auto;
 
   display: flex;
@@ -101,7 +101,7 @@ input[type='checkbox'] {
 
 .left,
 .right {
-  width: 50%;
+  flex-basis: 40%;
 
   padding: 5px 25px;
 }
@@ -152,5 +152,21 @@ input[type='checkbox'] {
 
 .send {
   display: flex;
+  flex-basis: 20%;
   flex-direction: column;
+}
+
+.error,
+.success {
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 15px;
+}
+
+.error {
+  color: tomato;
+}
+
+.success {
+  color: seagreen;
 }

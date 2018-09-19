@@ -1,0 +1,36 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add spectable-code-slide
+
+PATH: 
+  C:\Users\GBromser\AppData\Local\Programs\Git\mingw64\bin;C:\Users\GBromser\AppData\Local\Programs\Git\usr\bin;C:\Users\GBromser\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Microsoft VS Code\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Users\GBromser\AppData\Local\Microsoft\WindowsApps;C:\Users\GBromser\AppData\Local\Programs\Git\cmd;C:\Users\GBromser\AppData\Local\hyper\app-2.0.0\resources\bin;C:\Users\GBromser\AppData\Local\.meteor;C:\Users\GBromser\AppData\Roaming\npm;C:\Users\GBromser\AppData\Local\Yarn\bin;C:\Users\GBromser\AppData\Roaming\Composer\vendor\bin;C:\Users\GBromser\AppData\Local\now-cli
+
+Yarn version: 
+  1.9.2
+
+Node version: 
+  10.7.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/spectable-code-slide: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:64150:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:137416:22)
+      at Request.emit (events.js:182:13)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:138388:10)
+      at Request.emit (events.js:182:13)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:138310:12)
+      at Object.onceWrapper (events.js:273:13)
+      at IncomingMessage.emit (events.js:187:15)
+      at endReadableNT (_stream_readable.js:1081:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

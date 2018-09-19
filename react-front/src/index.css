@@ -156,3 +156,37 @@ a:hover {
 
   padding: 0 50px;
 }
+
+/* Loading Spinner */
+.spinner {
+  animation: rotate 2s linear infinite;
+  margin: 50px auto 50px auto;
+  width: 250px;
+  height: 250px;
+}
+
+.spinner .path {
+  stroke: #4dba87;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
