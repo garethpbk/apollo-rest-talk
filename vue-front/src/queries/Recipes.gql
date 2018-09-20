@@ -1,0 +1,46 @@
+# vue-cli can import GraphQL queries with vue-cli-apollo-plugin
+# it throws an error in the console though because eslint tries to lint the .gql file cuz it's dumb
+# see https://github.com/Akryum/vue-cli-plugin-apollo/issues/48
+
+query ALL_RECIPES {
+  recipes @rest(type: "Recipe", path: "") {
+    _id
+    name
+    images
+    dietary @type(name: "Dietary") {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+}
+
+query GET_RECIPE($id: ID!) {
+  recipe(id: $id) @rest(type: "Recipe", path: "{args.id}") {
+    name
+    category
+    description
+    ingredients
+    images
+    dietary @type(name: "Dietary") {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+}
+
+mutation NEW_RECIPE {
+  createRecipe(input: $input) @rest(type: "Recipe", path: "", method: "POST") {
+    name
+    category
+    description
+    ingredients
+    images
+    dietary @type(name: "Dietary") {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+}

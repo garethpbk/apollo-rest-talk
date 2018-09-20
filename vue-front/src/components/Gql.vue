@@ -11,24 +11,9 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
 import Recipe from './Recipe.vue';
 import Spinner from './Spinner.vue';
-
-const ALL_RECIPES = gql`
-  query AllRecipes {
-    recipes @rest(type: "Recipe", path: "") {
-      _id
-      name
-      images
-      dietary @type(name: "Dietary") {
-        vegetarian
-        vegan
-        glutenFree
-      }
-    }
-  }
-`;
+import { ALL_RECIPES } from '../queries/Recipes.gql';
 
 export default {
   name: 'Gql',

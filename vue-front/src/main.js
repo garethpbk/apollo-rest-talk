@@ -24,7 +24,9 @@ Vue.use(VueApollo);
 const apolloProvider = new VueApollo({
   defaultClient: client,
   defaultOptions: {
-    $loadingKey: 'loading;',
+    $query: {
+      loadingKey: 'loading',
+    },
   },
 });
 

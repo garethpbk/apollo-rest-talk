@@ -1,8 +1,7 @@
 <template>
     <div>
         <h2>Individual GraphQL</h2>
-        <!-- for some reason this can't just be loading, but works in Gql.vue...? -->
-        <h4 v-if="$apollo.loading"><Spinner /></h4>
+        <h4 v-if="loading"><Spinner /></h4>
         <div v-else class="indv-wrapper">
             <div class="indv-left card">
                 <h4>{{ recipe.name }}</h4>
@@ -21,25 +20,8 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
 import Spinner from './Spinner.vue';
-
-const GET_RECIPE = gql`
-  query recipe($id: ID!) {
-    recipe(id: $id) @rest(type: "Recipe", path: "{args.id}") {
-      name
-      category
-      description
-      ingredients
-      images
-      dietary @type(name: "Dietary") {
-        vegetarian
-        vegan
-        glutenFree
-      }
-    }
-  }
-`;
+import { GET_RECIPE } from '../queries/Recipes.gql';
 
 export default {
   name: 'Gql',

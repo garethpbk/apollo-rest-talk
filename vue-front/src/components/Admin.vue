@@ -52,24 +52,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
-
-const NEW_RECIPE = gql`
-  mutation CreateRecipe {
-    createRecipe(input: $input) @rest(type: "Recipe", path: "", method: "POST") {
-      name
-      category
-      description
-      ingredients
-      images
-      dietary @type(name: "Dietary") {
-        vegetarian
-        vegan
-        glutenFree
-      }
-    }
-  }
-`;
+import { NEW_RECIPE } from '../queries/Recipes.gql';
 
 export default {
   name: 'Admin',
