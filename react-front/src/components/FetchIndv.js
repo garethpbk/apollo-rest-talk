@@ -19,7 +19,7 @@ export default class FetchIndv extends Component {
   componentWillMount = () => {
     const id = this.props.props.match.params.id;
 
-    fetch(`http://recipe.gareth.cool/api/recipes/${id}`)
+    fetch(`https://recipe.gareth.cool/api/recipes/${id}`)
       .then(res => {
         return res.json();
       })

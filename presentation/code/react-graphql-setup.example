@@ -5,7 +5,7 @@ import { RestLink } from 'apollo-link-rest';
 import { ApolloProvider } from 'react-apollo';
 
 const restLink = new RestLink({
-  uri: 'http://recipe.gareth.cool/api/recipes/',
+  uri: 'https://recipe.gareth.cool/api/recipes/',
   credentials: null
 });
 

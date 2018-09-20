@@ -65,7 +65,7 @@ export default () => (
     </Header>
     <Text margin="50px 0" textColor="secondary" size={2}>
       <a href="http://raucous.gareth.cool/" target="_blank" rel="noreferrer noopener">
-        http://raucous.gareth.cool/
+        https://raucous.gareth.cool/
       </a>
     </Text>
     <Text bold>Fetch All Recipes</Text>

@@ -65,7 +65,7 @@ export default () => (
     </Header>
     <Text margin="50px 0" textColor="secondary" size={2}>
       <a href="http://vivacious.gareth.cool/" target="_blank" rel="noreferrer noopener">
-        http://vivacious.gareth.cool/
+        https://vivacious.gareth.cool/
       </a>
     </Text>
     <Text bold>vue-apollo</Text>

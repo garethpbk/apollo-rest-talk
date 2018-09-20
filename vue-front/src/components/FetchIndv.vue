@@ -36,7 +36,7 @@ export default {
   methods: {
     fetchRecipe: async function() {
       try {
-        const res = await fetch(`http://recipe.gareth.cool/api/recipes/${this.$route.params.id}`);
+        const res = await fetch(`https://recipe.gareth.cool/api/recipes/${this.$route.params.id}`);
         const recipe = await res.json();
         this.recipe = recipe;
       } catch (e) {

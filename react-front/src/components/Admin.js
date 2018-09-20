@@ -134,7 +134,7 @@ export default class Admin extends Component {
 
     recipeToSend.images = images;
 
-    const rawResponse = await fetch('http://recipe.gareth.cool/api/recipes/', {
+    const rawResponse = await fetch('https://recipe.gareth.cool/api/recipes/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
