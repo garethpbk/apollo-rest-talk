@@ -1,0 +1,16 @@
+Vue.use(VueApollo);
+
+const apolloProvider = new VueApollo({
+  defaultClient: client,
+  defaultOptions: {
+    $query: {
+      loadingKey: 'loading',
+    },
+  },
+});
+
+new Vue({
+  render: h => h(App),
+  router,
+  provide: apolloProvider.provide(),
+}).$mount('#app');

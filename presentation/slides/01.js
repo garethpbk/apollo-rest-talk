@@ -11,6 +11,10 @@ const Header = styled.h1`
   text-transform: uppercase;
 `;
 
+const Second = styled(Text)`
+  font-size: 40px !important;
+`;
+
 const Svg = styled.img`
   margin: 50px 50px 0 50px;
   width: 200px;
@@ -29,9 +33,9 @@ const SmallText = styled(Text)`
 export default () => (
   <Slide bgColor="primary">
     <Header textColor="secondary">Try GraphQL with Apollo Client</Header>
-    <Text margin="50px 0" textColor="tertiary" size={2}>
+    <Second margin="50px 0" textColor="tertiary" bold>
       Use GraphQL with your existing REST APIs
-    </Text>
+    </Second>
     <Svg src={apolloLogo} alt="Apollo Logo" />
     <Svg src={graphqlLogo} alt="GraphQL Logo" />
     <Svg src={reactLogo} alt="React Logo" />

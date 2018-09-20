@@ -1,0 +1,31 @@
+import { Mutation } from 'react-apollo';
+import { ALL_RECIPES, NEW_RECIPE } from '../queries/Recipes';
+
+export default class Admin extends Component {
+  render() {
+    return (
+      <Mutation
+        mutation={NEW_RECIPE}
+        fetchPolicy="no-cache"
+        update={(cache, { data: { createRecipe } }) => {
+          const { recipes } = cache.readQuery({ query: ALL_RECIPES });
+          cache.writeQuery({
+            query: ALL_RECIPES,
+            data: { recipes: recipes.concat([createRecipe]) },
+          });
+        }}
+      >
+        {(createRecipe, { data, loading, error }) => {
+          return (
+            <MutationButton
+              createRecipe={createRecipe}
+              recipe={this.state.recipe}
+              loading={loading}
+              error={error}
+            />
+          );
+        }}
+      </Mutation>
+    );
+  }
+}

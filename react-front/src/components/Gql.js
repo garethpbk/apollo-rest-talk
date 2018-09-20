@@ -8,12 +8,20 @@ export default class Gql extends Component {
   render() {
     return (
       <Query query={ALL_RECIPES}>
-        {({ data, loading }) => {
+        {({ data, error, loading }) => {
           if (loading)
             return (
               <div>
                 <h2>GraphQL</h2>
                 <Spinner />
+              </div>
+            );
+
+          if (error)
+            return (
+              <div>
+                <h2>GraphQL</h2>
+                {`ERROR! ${error}`}
               </div>
             );
 

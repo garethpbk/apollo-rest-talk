@@ -1,0 +1,30 @@
+import { Query } from 'react-apollo';
+import { ALL_RECIPES } from '../queries/Recipes';
+
+export default class Gql extends Component {
+  render() {
+    return (
+      <Query query={ALL_RECIPES}>
+        {({ data, error, loading }) => {
+          if (loading) return <Jsx />
+
+          if (error) return <Jsx />
+
+          const { recipes } = data;
+
+          return (
+            <ul>
+                {recipes.map(recipe => {
+                    const { _id, name, images, dietary } = recipe;
+                    const { vegetarian, vegan, glutenFree } = dietary;
+                    return (
+                        <li key={name}><Jsx /></li>
+                    );
+                })}
+            </ul>
+          );
+        }}
+      </Query>
+    );
+  }
+}

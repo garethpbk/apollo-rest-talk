@@ -14,6 +14,16 @@ import SlideThree from '../slides/03';
 import SlideFour from '../slides/04';
 import SlideFive from '../slides/05';
 import SlideSix from '../slides/06';
+import SlideSeven from '../slides/07';
+import SlideEight from '../slides/08';
+import SlideNine from '../slides/09';
+import SlideTen from '../slides/10';
+import SlideEleven from '../slides/11';
+import SlideTwelve from '../slides/12';
+import SlideThirteen from '../slides/13';
+import SlideFourteen from '../slides/14';
+import SlideFifteen from '../slides/15';
+import SlideSixteen from '../slides/16';
 
 // Require CSS
 require('normalize.css');
@@ -40,47 +50,17 @@ export default class Presentation extends React.Component {
         <SlideThree />
         <SlideFour />
         <SlideFive />
-        {/* <SlideSix /> */}
-        <Slide transition={['fade']} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>
-            Typography
-          </Heading>
-          <Heading size={1} textColor="secondary">
-            Heading 1
-          </Heading>
-          <Heading size={2} textColor="secondary">
-            Heading 2
-          </Heading>
-          <Heading size={3} textColor="secondary">
-            Heading 3
-          </Heading>
-          <Heading size={4} textColor="secondary">
-            Heading 4
-          </Heading>
-          <Heading size={5} textColor="secondary">
-            Heading 5
-          </Heading>
-          <Text size={6} textColor="secondary">
-            Standard text
-          </Text>
-        </Slide>
-        <Slide transition={['fade']} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Standard List
-          </Heading>
-          <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
-          </List>
-        </Slide>
-        <Slide transition={['fade']} bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
-          </BlockQuote>
-        </Slide>
+        <SlideSix />
+        <SlideSeven />
+        <SlideEight />
+        <SlideNine />
+        <SlideTen />
+        <SlideEleven />
+        <SlideTwelve />
+        <SlideThirteen />
+        <SlideFourteen />
+        <SlideFifteen />
+        <SlideSixteen />
       </Deck>
     );
   }

@@ -1,0 +1,28 @@
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { RestLink } from 'apollo-link-rest';
+import { ApolloProvider } from 'react-apollo';
+
+const restLink = new RestLink({
+  uri: 'http://recipe.gareth.cool/api/recipes/',
+  credentials: null
+});
+
+const client = new ApolloClient({
+  link: restLink,
+  cache: new InMemoryCache(),
+  connectToDevTools: true
+});
+
+class App extends Component {
+  render() {
+    return (
+      <ApolloProvider client={client}>
+        <Router>
+          { ...rest of App component }
+        </Router>
+      </ApolloProvider>
+    );
+  }
+}

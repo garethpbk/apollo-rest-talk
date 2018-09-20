@@ -54,8 +54,7 @@ export default () => (
       <Logo src={graphqlLogo} alt="GraphQL Logo" />
     </Header>
     <Text textColor="secondary" margin="0 0 25px 0">
-      A strongly-typed, declarative query language for fetching and posting
-      data.
+      A strongly-typed, declarative query language for fetching and posting data
     </Text>
     <WhiteCodePane
       lang="graphql"

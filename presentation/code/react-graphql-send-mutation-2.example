@@ -1,0 +1,13 @@
+export default class MutationButton extends Component {
+  sendMutation = () => {
+      this.props.createRecipe({
+        variables: {
+          input: { name, category, description, images, ingredients, dietary },
+        },
+      });
+    }
+
+  render() {
+    return <button onClick={this.sendMutation}>Send via Mutation</button>;
+  }
+}

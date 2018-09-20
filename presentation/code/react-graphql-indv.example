@@ -1,0 +1,14 @@
+query GET_RECIPE($id: ID!) {
+    recipe(id: $id) @rest(type: "Recipe", path: "{args.id}") {
+      name
+      category
+      description
+      ingredients
+      images
+      dietary @type(name: "Dietary") {
+        vegetarian
+        vegan
+        glutenFree
+      }
+    }
+  }
