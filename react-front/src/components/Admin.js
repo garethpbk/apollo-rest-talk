@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 import MutationButton from './Mutation';
+import { ALL_RECIPES, NEW_RECIPE } from '../queries/Recipes';
 
 export default class Admin extends Component {
   state = {
@@ -134,7 +134,7 @@ export default class Admin extends Component {
 
     recipeToSend.images = images;
 
-    const rawResponse = await fetch('http://recipe.gareth.cool/api/recipes/', {
+    const rawResponse = await fetch('https://recipe.gareth.cool/api/recipes/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -252,7 +252,17 @@ export default class Admin extends Component {
         </div>
         <div className="send card">
           <button onClick={() => this.validateFetch()}>Post via Fetch</button>
-          <Mutation mutation={NEW_RECIPE} fetchPolicy="no-cache">
+          <Mutation
+            mutation={NEW_RECIPE}
+            fetchPolicy="no-cache"
+            update={(cache, { data: { createRecipe } }) => {
+              const { recipes } = cache.readQuery({ query: ALL_RECIPES });
+              cache.writeQuery({
+                query: ALL_RECIPES,
+                data: { recipes: recipes.concat([createRecipe]) },
+              });
+            }}
+          >
             {(createRecipe, { data, loading, error }) => {
               return (
                 <MutationButton
@@ -274,20 +284,3 @@ export default class Admin extends Component {
     );
   }
 }
-
-const NEW_RECIPE = gql`
-  mutation CreateRecipe {
-    createRecipe(input: $input) @rest(type: "Recipe", path: "", method: "POST") {
-      name
-      category
-      description
-      ingredients
-      images
-      dietary @type(name: "Dietary") {
-        vegetarian
-        vegan
-        glutenFree
-      }
-    }
-  }
-`;

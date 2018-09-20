@@ -10,7 +10,6 @@ const ModSlide = styled(Slide)`
 
 const Header = styled.h1`
   font-size: 5rem;
-  text-transform: uppercase;
 
   margin: 0 25px;
 `;
@@ -22,7 +21,7 @@ const Svg = styled.img`
 
 const WhiteCodePane = styled(CodePane)`
   color: white !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
 
   pre {
     padding: 2.5% 20% !important;

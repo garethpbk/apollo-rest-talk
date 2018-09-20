@@ -41,14 +41,14 @@ export default () => (
       <Logo src={apolloLogo} alt="Apollo Logo" />
     </Header>
     <Text textColor="secondary" margin="0 0 50px 0">
-      A set of tools for working with GraphQL.
+      A set of tools for working with GraphQL
     </Text>
     <Text margin="0 0 75px 0">
-      <strong>Apollo Client</strong>, Apollo Server, Apollo Engine.
+      <strong>Apollo Client</strong>, Apollo Server, Apollo Engine
     </Text>
     <Code>
-      apollo-client, apollo-cache-inmemory, apollo-link, apollo-link-rest,
-      graphql, graphql-anywhere, graphql-tag, react-apollo
+      apollo-client, apollo-cache-inmemory, apollo-link, apollo-link-rest, graphql, graphql-anywhere, graphql-tag,
+      react-apollo
     </Code>
     <Text margin="50px 0 0 0">
       <strong>apollo-link-rest</strong>

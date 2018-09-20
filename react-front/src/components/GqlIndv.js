@@ -1,18 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import Spinner from './Spinner';
+import { GET_RECIPE } from '../queries/Recipes';
 
 export default class GqlInd extends Component {
   render() {
     const id = this.props.props.match.params.id;
-    console.log(id);
+
     return (
       <Fragment>
         <h2>Individual GraphQL</h2>
         <Query query={GET_RECIPE} variables={{ id }}>
           {({ data, loading }) => {
             if (loading) return <Spinner />;
+
+            if (error) return `ERROR! ${error}`;
 
             const { recipe } = data;
             const { name, category, description, images, ingredients, dietary } = recipe;
@@ -45,20 +47,3 @@ export default class GqlInd extends Component {
     );
   }
 }
-
-const GET_RECIPE = gql`
-  query recipe($id: ID!) {
-    recipe(id: $id) @rest(type: "Recipe", path: "{args.id}") {
-      name
-      category
-      description
-      ingredients
-      images
-      dietary @type(name: "Dietary") {
-        vegetarian
-        vegan
-        glutenFree
-      }
-    }
-  }
-`;

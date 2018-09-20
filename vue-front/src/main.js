@@ -9,7 +9,7 @@ import VueApollo from 'vue-apollo';
 Vue.config.productionTip = false;
 
 const restLink = new RestLink({
-  uri: 'http://recipe.gareth.cool/api/recipes/',
+  uri: 'https://recipe.gareth.cool/api/recipes/',
   credentials: null,
 });
 
@@ -24,7 +24,9 @@ Vue.use(VueApollo);
 const apolloProvider = new VueApollo({
   defaultClient: client,
   defaultOptions: {
-    $loadingKey: 'loading;',
+    $query: {
+      loadingKey: 'loading',
+    },
   },
 });
 

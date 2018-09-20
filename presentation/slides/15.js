@@ -28,10 +28,10 @@ const CodeContainer = styled.div`
 
 const WhiteCodePane = styled(CodePane)`
   color: white !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
 
   pre {
-    padding: 2.5% 14% !important;
+    padding: 2.5% 10% !important;
     span {
       color: cornflowerblue !important;
     }
@@ -40,7 +40,6 @@ const WhiteCodePane = styled(CodePane)`
 
 export default () => (
   <ModSlide bgColor="primary">
-    <Header textColor="secondary">Apollo Client Setup</Header>
-    <WhiteCodePane lang="javascript" source={require('raw-loader!../code/react-graphql-setup.example')} />
+    <WhiteCodePane lang="javascript" source={require('raw-loader!../code/vue-graphql-2.example')} />
   </ModSlide>
 );

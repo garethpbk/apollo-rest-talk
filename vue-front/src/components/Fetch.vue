@@ -25,7 +25,7 @@ export default {
   methods: {
     fetchRecipes: async function() {
       try {
-        const res = await fetch('http://recipe.gareth.cool/api/recipes/');
+        const res = await fetch('https://recipe.gareth.cool/api/recipes/');
         const recipes = await res.json();
         this.recipes = recipes;
       } catch (e) {

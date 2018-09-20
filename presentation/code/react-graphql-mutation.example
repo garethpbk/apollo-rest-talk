@@ -1,0 +1,14 @@
+mutation NEW_RECIPE {
+    createRecipe(input: $input) @rest(type: "Recipe", path: "", method: "POST") {
+      name
+      category
+      description
+      ingredients
+      images
+      dietary @type(name: "Dietary") {
+        vegetarian
+        vegan
+        glutenFree
+      }
+    }
+  }

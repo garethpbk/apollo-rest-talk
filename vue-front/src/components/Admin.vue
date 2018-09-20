@@ -52,24 +52,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
-
-const NEW_RECIPE = gql`
-  mutation CreateRecipe {
-    createRecipe(input: $input) @rest(type: "Recipe", path: "", method: "POST") {
-      name
-      category
-      description
-      ingredients
-      images
-      dietary @type(name: "Dietary") {
-        vegetarian
-        vegan
-        glutenFree
-      }
-    }
-  }
-`;
+import { NEW_RECIPE } from '../queries/Recipes.gql';
 
 export default {
   name: 'Admin',
@@ -129,7 +112,7 @@ export default {
       recipeToSend.images = images;
 
       // eslint-disable-next-line
-      const rawResponse = await fetch('http://recipe.gareth.cool/api/recipes/', {
+      const rawResponse = await fetch('https://recipe.gareth.cool/api/recipes/', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

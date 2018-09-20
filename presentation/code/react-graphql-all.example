@@ -1,0 +1,12 @@
+query ALL_RECIPES {
+    recipes @rest(type: "Recipe", path: "") {
+      _id
+      name
+      images
+      dietary @type(name: "Dietary") {
+        vegetarian
+        vegan
+        glutenFree
+      }
+    }
+  }

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Slide, Text, CodePane } from 'spectacle';
 
-import reactLogo from '../assets/img/react-logo.svg';
+import vueLogo from '../assets/img/vue-logo.svg';
 
 const ModSlide = styled(Slide)`
   max-height: none !important;
@@ -51,7 +51,7 @@ const WhiteCodePane = styled(CodePane)`
   font-size: 24px !important;
 
   pre {
-    padding: 2.5% 15% !important;
+    padding: 2.5% 20% !important;
     span {
       color: cornflowerblue !important;
     }
@@ -61,14 +61,14 @@ const WhiteCodePane = styled(CodePane)`
 export default () => (
   <ModSlide bgColor="primary">
     <Header textColor="secondary">
-      Raucous Recipes <Logo src={reactLogo} alt="React Logo" />
+      Vivacious Viands <Logo src={vueLogo} alt="Vue Logo" />
     </Header>
     <Text margin="50px 0" textColor="secondary" size={2}>
-      <a href="http://raucous.gareth.cool/" target="_blank" rel="noreferrer noopener">
-        https://raucous.gareth.cool/
+      <a href="http://vivacious.gareth.cool/" target="_blank" rel="noreferrer noopener">
+        https://vivacious.gareth.cool/
       </a>
     </Text>
-    <Text bold>Fetch All Recipes</Text>
-    <WhiteCodePane lang="javascript" source={require('raw-loader!../code/react-fetch-all.example')} />
+    <Text bold>vue-apollo</Text>
+    <WhiteCodePane lang="javascript" source={require('raw-loader!../code/vue-graphql.example')} />
   </ModSlide>
 );

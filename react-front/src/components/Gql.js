@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import Spinner from './Spinner';
+import { ALL_RECIPES } from '../queries/Recipes';
 
 export default class Gql extends Component {
   render() {
     return (
       <Query query={ALL_RECIPES}>
-        {({ data, loading }) => {
+        {({ data, error, loading }) => {
           if (loading)
             return (
               <div>
                 <h2>GraphQL</h2>
                 <Spinner />
+              </div>
+            );
+
+          if (error)
+            return (
+              <div>
+                <h2>GraphQL</h2>
+                {`ERROR! ${error}`}
               </div>
             );
 
@@ -48,18 +56,3 @@ export default class Gql extends Component {
     );
   }
 }
-
-const ALL_RECIPES = gql`
-  query AllRecipes {
-    recipes @rest(type: "Recipe", path: "") {
-      _id
-      name
-      images
-      dietary @type(name: "Dietary") {
-        vegetarian
-        vegan
-        glutenFree
-      }
-    }
-  }
-`;
