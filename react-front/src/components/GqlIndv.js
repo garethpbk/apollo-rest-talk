@@ -11,7 +11,7 @@ export default class GqlInd extends Component {
       <Fragment>
         <h2>Individual GraphQL</h2>
         <Query query={GET_RECIPE} variables={{ id }}>
-          {({ data, loading }) => {
+          {({ data, error, loading }) => {
             if (loading) return <Spinner />;
 
             if (error) return `ERROR! ${error}`;
