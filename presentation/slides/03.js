@@ -1,22 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Slide, Text, Code } from 'spectacle';
+import { ModSlide, Header } from './Base';
 
 import apolloLogo from '../assets/img/apollo-logo.svg';
-
-const ModSlide = styled(Slide)`
-  max-height: none !important;
-`;
-
-const Header = styled.h1`
-  font-size: 5rem;
-
-  margin: 25px 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 const Content = styled.div`
   display: flex;
@@ -36,7 +23,7 @@ const Logo = styled.img`
 
 export default () => (
   <ModSlide transition={['zoom']} bgColor="primary">
-    <Header textColor="secondary">
+    <Header textColor="secondary" margin="25px 0">
       Apollo
       <Logo src={apolloLogo} alt="Apollo Logo" />
     </Header>
