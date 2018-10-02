@@ -1,0 +1,17 @@
+# I think queries and mutations have to have their own individual files for graphql.macro, thus why they are split
+# can use fragments but that's unnecessary in this project
+
+query GET_RECIPE($id: ID!) {
+  recipe(id: $id) @rest(type: "Recipe", path: "{args.id}") {
+    name
+    category
+    description
+    ingredients
+    images
+    dietary @type(name: "Dietary") {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+}

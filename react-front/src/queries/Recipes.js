@@ -1,4 +1,7 @@
 /**
+ * MORE RECENT NOTE: react-scripts v2 allows for direct importing from .graphql filers through graphql.macro babel loader
+ * keeping this file here for an example of how you can separate out your queries without v2
+ *
  * NOTE: Ideally this would be a .gql or .graphql file and queries could be written without graphl-tag
  * As of now, react-scripts does not include graphql-loader, and I don't feel like ejecting or messing with cra-rewired
  * So we will just use JS here...

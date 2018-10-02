@@ -28,7 +28,7 @@ export default class FetchIndv extends Component {
       });
   };
   render() {
-    const { name, category, description, images, ingredients, dietary } = this.state.recipe;
+    const { name, description, images, ingredients } = this.state.recipe;
     return (
       <div>
         <h2>Individual Fetch</h2>
