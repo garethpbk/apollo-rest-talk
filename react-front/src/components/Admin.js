@@ -1,7 +1,22 @@
+/**
+ *
+ * NOTE: When you send a POST request with fetch, the Apollo cache does not automatically update
+ * So the new entry added will not show up without refreshing the page
+ * By default sending a graphql mutation has the same behavior so..
+ * ...we use the update prop in the <Mutation /> component to tell Apollo to update the cache when a mutation is sent
+ *
+ * I dunno if there is a way to update the cache through fetch, but it's not worth pursuing imo
+ * You should not have to use fetch and mutations together, this is just for demonstrative purposes
+ *
+ */
+
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
+import { loader } from 'graphql.macro';
 import MutationButton from './Mutation';
-import { ALL_RECIPES, NEW_RECIPE } from '../queries/Recipes';
+
+const ALL_RECIPES = loader('../queries/ALL_RECIPES.graphql');
+const NEW_RECIPE = loader('../queries/NEW_RECIPE.graphql');
 
 export default class Admin extends Component {
   state = {
@@ -148,6 +163,8 @@ export default class Admin extends Component {
     this.setState(() => ({
       successMessage: 'Recipe successfully sent via fetch!',
     }));
+
+    return rawResponse;
   };
 
   clearRecipe = () => {

@@ -1,20 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Slide, Text } from 'spectacle';
-
-const ModSlide = styled(Slide)`
-  max-height: none !important;
-`;
-
-const Header = styled.h1`
-  font-size: 5rem;
-
-  margin: 150px 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+import { Header } from './Base';
 
 const Content = styled(Text)`
   a {
@@ -35,8 +22,10 @@ const Content = styled(Text)`
 `;
 
 export default () => (
-  <ModSlide bgColor="primary">
-    <Header textColor="secondary">THANK YOU</Header>
+  <Slide bgColor="primary">
+    <Header textColor="secondary" fontSize="5rem" margin="150px 0">
+      THANK YOU
+    </Header>
     <Content textColor="secondary">
       <a href="https://github.com/garethpbk/apollo-rest-talk" target="_blank" rel="noopener noreferrer">
         https://github.com/garethpbk/apollo-rest-talk
@@ -45,5 +34,5 @@ export default () => (
     <Text bold margin="150px 0 150px 0">
       @garethbk
     </Text>
-  </ModSlide>
+  </Slide>
 );

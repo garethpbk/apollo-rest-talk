@@ -1,32 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Slide, Text, CodePane } from 'spectacle';
+import { ModSlide, Header, WhiteCodePane } from './Base';
 
 import reactLogo from '../assets/img/react-logo.svg';
-
-const ModSlide = styled(Slide)`
-  max-height: none !important;
-
-  a {
-    color: cornflowerblue;
-    text-decoration: none;
-
-    &:hover {
-      color: seagreen;
-      text-decoration: underline;
-    }
-  }
-`;
-
-const Header = styled.h1`
-  font-size: 4.5rem;
-
-  margin: 25px 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 const Logo = styled.img`
   width: 125px;
@@ -40,27 +17,9 @@ const Logo = styled.img`
   }
 `;
 
-const CodeContainer = styled.div`
-  display: flex;
-
-  width: 100%;
-`;
-
-const WhiteCodePane = styled(CodePane)`
-  color: white !important;
-  font-size: 24px !important;
-
-  pre {
-    padding: 2.5% 15% !important;
-    span {
-      color: cornflowerblue !important;
-    }
-  }
-`;
-
 export default () => (
   <ModSlide bgColor="primary">
-    <Header textColor="secondary">
+    <Header textColor="secondary" margin="25px 0">
       Raucous Recipes <Logo src={reactLogo} alt="React Logo" />
     </Header>
     <Text margin="50px 0" textColor="secondary" size={2}>
@@ -69,6 +28,11 @@ export default () => (
       </a>
     </Text>
     <Text bold>Fetch All Recipes</Text>
-    <WhiteCodePane lang="javascript" source={require('raw-loader!../code/react-fetch-all.example')} />
+    <WhiteCodePane
+      lang="javascript"
+      source={require('raw-loader!../code/react-fetch-all.example')}
+      fontSize="24px"
+      spanPadding="2.5% 15%"
+    />
   </ModSlide>
 );

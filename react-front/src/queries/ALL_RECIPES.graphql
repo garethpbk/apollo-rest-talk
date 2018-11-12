@@ -1,0 +1,14 @@
+# as of react-scripts v2 create-react-app can now import graphql queries without ejecting or rewire!  cool!
+
+query ALL_RECIPES {
+  recipes @rest(type: "Recipe", path: "") {
+    _id
+    name
+    images
+    dietary @type(name: "Dietary") {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+}

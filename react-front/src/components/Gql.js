@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
+import { loader } from 'graphql.macro';
 import Spinner from './Spinner';
-import { ALL_RECIPES } from '../queries/Recipes';
+
+const ALL_RECIPES = loader('../queries/ALL_RECIPES.graphql');
 
 export default class Gql extends Component {
   render() {

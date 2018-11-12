@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Query } from 'react-apollo';
+import { loader } from 'graphql.macro';
 import Spinner from './Spinner';
-import { GET_RECIPE } from '../queries/Recipes';
+
+const GET_RECIPE = loader('../queries/GET_RECIPE.graphql');
 
 export default class GqlInd extends Component {
   render() {
@@ -17,7 +19,7 @@ export default class GqlInd extends Component {
             if (error) return `ERROR! ${error}`;
 
             const { recipe } = data;
-            const { name, category, description, images, ingredients, dietary } = recipe;
+            const { name, description, images, ingredients } = recipe;
             return (
               <div>
                 <div className="indv-wrapper">
