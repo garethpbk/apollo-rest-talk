@@ -44,7 +44,7 @@ const theme = createTheme(
 export default class Presentation extends React.Component {
   render() {
     return (
-      <Deck transition={['slide']} transitionDuration={500} theme={theme}>
+      <Deck transition={['slide']} transitionDuration={500} theme={theme} >
         <SlideOne />
         <SlideTwo />
         <SlideThree />
